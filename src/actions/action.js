@@ -1,6 +1,3 @@
 "use server";
-const postRecipe = async (formData) => {
-  const recipeName = formData.get("recipename");
-  console.log("formData: ", formData);
-};
+const postRecipe = async () => {};
 export default postRecipe;
