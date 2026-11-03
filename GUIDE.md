@@ -1,22 +1,19 @@
 # Opgaven
 
-I denne opgave skal du oprette en server action i en separat fil i `src/actions/action.js`.
-
-Det betyder, at du skal lave en ny fil i `actions`-mappen, og i den fil skal du placere `"use server"` i toppen. Derefter skal du eksportere en funktion, som håndterer data fra formularen.
+I denne opgave skal du oprette en server action i filen `src/actions/action.js`.
 
 Se dokumentationen her for inspiration:
 https://nextjs.org/docs/13/app/api-reference/functions/server-actions#with-client-components
 
 ## Instruktioner
 
-1. Opret en ny fil (action.js) i `src/actions/`
-2. Sæt `"use server"` i toppen af filen
-3. Opret en server action med navnet `postRecipe`
-4. Hent værdien fra input-feltet, der indeholder opskriftens navn
-5. Udskriv værdien i konsollen med `console.log()`
-6. Importér server actionen ind i din client-komponent (RecipeForm)
-7. Knyt server actionen til formularen
-8. Submit formularen og observer resultatet i terminalen
+1. Sæt `"use server"` i toppen af filen `src/actions/action.js`
+2. Opret en server action med navnet `postRecipe`
+3. Brug formData til at Hente værdien fra input-feltet, der indeholder opskriftens navn
+4. Udskriv værdien i konsollen med `console.log()`
+5. Importer din server actionen i dit client-komponent (RecipeForm)
+6. Knyt server actionen til formularen med proppen formAction
+7. Submit formularen og observer resultatet i terminalen
 
 ## Vigtigt
 
