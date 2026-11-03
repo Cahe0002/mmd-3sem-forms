@@ -1,5 +1,4 @@
-import Image from "next/image";
-import MyForm from "@/components/Form";
+import RecipeForm from "@/components/RecipeForm";
 export default function Home() {
-  return <MyForm />;
+  return <RecipeForm />;
 }

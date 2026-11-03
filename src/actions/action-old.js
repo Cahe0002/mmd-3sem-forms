@@ -1,14 +1,14 @@
 "use server";
 const action = async (prevState, formData) => {
   await new Promise((resolve) => setTimeout(resolve, 1500));
-  const resname = formData.get("resname");
+  const recipeName = formData.get("resname");
 
   try {
     const res = await fetch("https://dummyjson.com/products/add", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        name: { resname },
+        name: { recipeName },
         /* her kan i lave de resterende opskrift informationer */
       }),
     });
@@ -18,13 +18,13 @@ const action = async (prevState, formData) => {
     }
 
     const data = await res.json();
-    if (!resname) {
+    if (!recipeName) {
       return {
         success: false,
         message: "Opskriftens navn skal udfyldes",
       };
     }
-    return { success: true, message: `Opskriften ${resname} blev gemt` };
+    return { success: true, message: `Opskriften ${recipeName} blev gemt` };
   } catch (error) {
     return { success: false, message: "Noget gik galt" };
   }
