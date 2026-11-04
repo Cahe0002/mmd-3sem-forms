@@ -21,7 +21,15 @@ const RecipeForm = () => {
 
   return (
     <>
+      {state.message && (
+        <div className={state.success ? "text-green-700" : "text-red-700"}>
+          {state.message}
+        </div>
+      )}
       <form>
+        {state.fieldErrors?.recipename?.[0] && (
+          <p className="text-red-700">{state.fieldErrors.recipename[0]}</p>
+        )}
         <input
           type="text"
           name="recipename"
@@ -34,11 +42,6 @@ const RecipeForm = () => {
           {isPending ? "submitting" : "Opret opskrift"}
         </button>
       </form>
-      {state.message && (
-        <div className={state.success ? "text-green-700" : "text-red-700"}>
-          {state.message}
-        </div>
-      )}
     </>
   );
 };

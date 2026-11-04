@@ -1,7 +1,12 @@
 "use server";
+import * as z from "zod";
+import { Recipe } from "@/schemas/recipeSchema";
+
 const postRecipe = async (previousState, formData) => {
-  const recipeName = formData.get("recipename");
   try {
+    const { recipename: recipeName } = Recipe.parse({
+      recipename: formData.get("recipename"),
+    });
     const response = await fetch("https://dummyjson.com/recipes/add", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -15,7 +20,12 @@ const postRecipe = async (previousState, formData) => {
     console.log(`Response status: ${response.status}`);
     return { success: true, message: "Opskriften blev oprettet" };
   } catch (error) {
-    console.log(error.message);
+    if (error instanceof z.ZodError) {
+      return {
+        success: false,
+        fieldErrors: z.flattenError(error).fieldErrors,
+      };
+    }
     return { success: false, message: "Der skete en fejl" };
   }
 };
