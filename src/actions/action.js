@@ -11,9 +11,8 @@ const postRecipe = async (formData) => {
     });
     if (!response.ok) {
       throw new Error(`Response status: ${response.status}`);
-    } else {
-      console.log(`Response status: ${response.status}`);
     }
+    console.log(`Response status: ${response.status}`);
   } catch (error) {
     console.log(error.message);
   }
