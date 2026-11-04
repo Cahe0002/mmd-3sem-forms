@@ -18,15 +18,20 @@ const postRecipe = async (previousState, formData) => {
       throw new Error(`Response status: ${response.status}`);
     }
     console.log(`Response status: ${response.status}`);
-    return { success: true, message: "Opskriften blev oprettet" };
+    return {
+      success: true,
+      message: "Opskriften blev oprettet",
+      fieldErrors: {},
+    };
   } catch (error) {
     if (error instanceof z.ZodError) {
       return {
         success: false,
+        message: "",
         fieldErrors: z.flattenError(error).fieldErrors,
       };
     }
-    return { success: false, message: "Der skete en fejl" };
+    return { success: false, message: "Der skete en fejl", fieldErrors: {} };
   }
 };
 export default postRecipe;
