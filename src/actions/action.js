@@ -13,11 +13,10 @@ const postRecipe = async (previousState, formData) => {
       throw new Error(`Response status: ${response.status}`);
     }
     console.log(`Response status: ${response.status}`);
-    return { succes: true, message: "Opskriften blev oprettet" };
-  
-} catch (error) {
+    return { success: true, message: "Opskriften blev oprettet" };
+  } catch (error) {
     console.log(error.message);
-    return { succes: false, message: "Der skete en fel" };
+    return { success: false, message: "Der skete en fejl" };
   }
 };
 export default postRecipe;

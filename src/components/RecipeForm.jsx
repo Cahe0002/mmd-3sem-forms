@@ -20,7 +20,11 @@ const RecipeForm = () => {
           {isPending ? "submitting" : "Opret opskrift"}
         </button>
       </form>
-      <div className="message">{state.succes && state.message}</div>
+      {state.message && (
+        <div className={state.success ? "text-green-700" : "text-red-700"}>
+          {state.message}
+        </div>
+      )}
     </>
   );
 };
