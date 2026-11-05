@@ -1,7 +1,10 @@
 "use client";
+
+import postRecipe from "@/actions/action";
+
 const RecipeForm = () => {
   return (
-    <form>
+    <form action={postRecipe}>
       <input
         type="text"
         name="recipename"
