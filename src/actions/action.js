@@ -2,7 +2,7 @@
 const postRecipe = async (previousState, formData) => {
   const recipeName = formData.get("recipename");
   try {
-    const response = await fetch("https://dummyjson.com/recipes/addth", {
+    const response = await fetch("https://dummyjson.com/recipes/addd", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -16,7 +16,7 @@ const postRecipe = async (previousState, formData) => {
     return { success: true, message: "Her er din opskrift" };
   } catch (error) {
     console.log(error.message);
-    return { success: false, message: "Der skete en fejl" };
+    return { success: false, message: "Der må ikke være tal i navnet!" };
   }
 };
 
