@@ -1,17 +1,23 @@
 "use server";
-const postRecipe = async (formData) => {
+const postRecipe = async (previousState, formData) => {
   const recipeName = formData.get("recipename");
-
-  fetch("https://dummyjson.com/recipes/add", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      name: "recipename",
-    }),
-  })
-    .then((res) => res.json())
-    .then(console.log);
-  console.log("Recipename is", recipeName);
+  try {
+    const response = await fetch("https://dummyjson.com/recipes/addth", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: recipeName,
+      }),
+    });
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+    }
+    console.log(`Response status: ${response.status}`);
+    return { success: true, message: "Her er din opskrift" };
+  } catch (error) {
+    console.log(error.message);
+    return { success: false, message: "Der skete en fejl" };
+  }
 };
 
 export default postRecipe;
